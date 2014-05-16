@@ -9,7 +9,7 @@ describe Robot do
     end
 
     it 'has an initial y coordinate' do
-      expect(robot.y_coord).to eq(1)
+      expect(robot.y_coord).to eq(2)
     end
 
     it 'has a set of instructions' do
