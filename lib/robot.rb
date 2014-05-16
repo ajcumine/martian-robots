@@ -21,4 +21,12 @@ class Robot
     @orientation = @initial_position[2]
   end
 
+  def final_x
+    @final_x
+  end
+
+  def final_y
+    @final_y
+  end
+
 end
