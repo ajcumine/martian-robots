@@ -17,4 +17,8 @@ class Robot
     @y_coord = @initial_position[1].to_i
   end
 
+  def orientation
+    @orientation = @initial_position[2]
+  end
+
 end

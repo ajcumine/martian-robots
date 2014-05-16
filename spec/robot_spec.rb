@@ -12,6 +12,10 @@ describe Robot do
       expect(robot.y_coord).to eq(2)
     end
 
+    it 'has an initial orientation' do
+      expect(robot.orientation).to eq('E')
+    end
+
     it 'has a set of instructions' do
       expect(robot.instructions).to eq(['R','F','R','F'])
     end
