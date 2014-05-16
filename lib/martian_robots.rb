@@ -1,3 +1,5 @@
+require_relative 'robot'
+
 def input(arg)
   data = arg.split("\n\n").map {|r| r.split("\n")}
   @map_data = data[0].shift
