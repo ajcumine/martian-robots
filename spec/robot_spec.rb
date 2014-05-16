@@ -42,4 +42,48 @@ describe Robot do
       expect(robot.final_x).to eq(0)
     end
   end
+
+  context 'following instructions R' do
+    it 'when facing north changes to east' do
+      robot = Robot.new('12N','R')
+      expect(robot.final_orientation).to eq('E')
+    end
+
+    it 'when facing east changes to south' do
+      robot = Robot.new('12E','R')
+      expect(robot.final_orientation).to eq('S')
+    end
+
+    it 'when facing south changes to west' do
+      robot = Robot.new('12S','R')
+      expect(robot.final_orientation).to eq('W')
+    end
+
+    it 'when facing west changes to north' do
+      robot = Robot.new('12W','R')
+      expect(robot.final_orientation).to eq('N')
+    end
+  end
+
+  context 'following instructions L' do
+    it 'when facing north changes to west' do
+      robot = Robot.new('12N','L')
+      expect(robot.final_orientation).to eq('W')
+    end
+
+    it 'when facing east changes to north' do
+      robot = Robot.new('12E','L')
+      expect(robot.final_orientation).to eq('N')
+    end
+
+    it 'when facing south changes to east' do
+      robot = Robot.new('12S','L')
+      expect(robot.final_orientation).to eq('E')
+    end
+
+    it 'when facing west changes to south' do
+      robot = Robot.new('12W','L')
+      expect(robot.final_orientation).to eq('S')
+    end
+  end
 end

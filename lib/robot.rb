@@ -29,4 +29,8 @@ class Robot
     @final_y
   end
 
+  def final_orientation
+    @final_orientation
+  end
+
 end
