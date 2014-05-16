@@ -6,8 +6,8 @@ describe 'martian_robots' do
       input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
     end
 
-    it 'separates the input' do
-      expect(input).to eq(["53\n11E\nRFRFRFRF", "32N\nFRRFLLFFRRFLL", "03W\nLLFFFLFLFL"])
+    it 'separates the map size' do
+      expect(map_data).to eq('53')
     end
   
     it 'has a maximum x value' do
