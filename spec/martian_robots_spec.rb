@@ -1,0 +1,1 @@
+require 'martian_robots'
