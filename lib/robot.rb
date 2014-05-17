@@ -1,6 +1,6 @@
 class Robot
 
-  def initialize(init_pos,instr)
+  def initialize(init_pos,instr,x_boundary,y_boundary)
     @initial_position = init_pos.split('')
     @instructions = instr.split('')
   end

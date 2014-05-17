@@ -24,7 +24,7 @@ end
 
 def robots
   @robots = []
-  @robot_data.each {|e| @robots << Robot.new(e[0],e[1]) }
+  @robot_data.each {|e| @robots << Robot.new(e[0],e[1],maximum_x,maximum_y)}
   @robots
 end
 
