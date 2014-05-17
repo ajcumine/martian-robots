@@ -28,15 +28,15 @@ def robots
   @robots
 end
 
-def output
-  @output = []
-  f = robots.each {|r| r.move }
-  f.each do |robot|
-    position = "#{robot.final_x}#{robot.final_y}#{robot.final_orientation}"
-    if robot.final_x > maximum_x || robot.final_y > maximum_y
-      position = position + "LOST"
-    end
-    @output << position
-  end
-  @output.join("\n")
-end
+# def output
+#   @output = []
+#   f = robots.each {|r| r.move }
+#   f.each do |robot|
+#     position = "#{robot.final_x}#{robot.final_y}#{robot.final_orientation}"
+#     if robot.final_x > maximum_x || robot.final_y > maximum_y
+#       position = position + "LOST"
+#     end
+#     @output << position
+#   end
+#   @output.join("\n")
+# end
