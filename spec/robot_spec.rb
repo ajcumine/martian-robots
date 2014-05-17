@@ -24,21 +24,25 @@ describe Robot do
   context 'following instructions F' do
     it 'increases y coordinate when facing north' do
       robot = Robot.new('12N','F')
+      robot.move
       expect(robot.final_y).to eq(3)
     end
 
     it 'decreases y coordinate when facing south' do
       robot = Robot.new('12S','F')
+      robot.move
       expect(robot.final_y).to eq(1)
     end
 
     it 'increases x coordinate when facing east' do
       robot = Robot.new('12E','F')
+      robot.move
       expect(robot.final_x).to eq(2)
     end
 
     it 'decreases x coordinate when facing west' do
       robot = Robot.new('12W','F')
+      robot.move
       expect(robot.final_x).to eq(0)
     end
   end
@@ -46,21 +50,25 @@ describe Robot do
   context 'following instructions R' do
     it 'when facing north changes to east' do
       robot = Robot.new('12N','R')
+      robot.move
       expect(robot.final_orientation).to eq('E')
     end
 
     it 'when facing east changes to south' do
       robot = Robot.new('12E','R')
+      robot.move
       expect(robot.final_orientation).to eq('S')
     end
 
     it 'when facing south changes to west' do
       robot = Robot.new('12S','R')
+      robot.move
       expect(robot.final_orientation).to eq('W')
     end
 
     it 'when facing west changes to north' do
       robot = Robot.new('12W','R')
+      robot.move
       expect(robot.final_orientation).to eq('N')
     end
   end
@@ -68,21 +76,25 @@ describe Robot do
   context 'following instructions L' do
     it 'when facing north changes to west' do
       robot = Robot.new('12N','L')
+      robot.move
       expect(robot.final_orientation).to eq('W')
     end
 
     it 'when facing east changes to north' do
       robot = Robot.new('12E','L')
+      robot.move
       expect(robot.final_orientation).to eq('N')
     end
 
     it 'when facing south changes to east' do
       robot = Robot.new('12S','L')
+      robot.move
       expect(robot.final_orientation).to eq('E')
     end
 
     it 'when facing west changes to south' do
       robot = Robot.new('12W','L')
+      robot.move
       expect(robot.final_orientation).to eq('S')
     end
   end

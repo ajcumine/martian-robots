@@ -33,4 +33,55 @@ class Robot
     @final_orientation
   end
 
+  def move
+    @final_orientation = orientation
+    @final_x = x_coord
+    @final_y = y_coord
+    @instructions.each do |i|
+      if i == 'F'
+        forward
+      elsif i == 'R'
+        right
+      elsif i == 'L'
+        left
+      end
+    end
+  end
+
+  def forward
+    if @final_orientation == 'N'
+      @final_y += 1
+    elsif @final_orientation == 'E'
+      @final_x += 1
+    elsif @final_orientation == 'S'
+      @final_y -= 1
+    elsif @final_orientation == 'W'
+      @final_x -= 1
+    end
+  end
+
+  def right
+    if @final_orientation == 'N'
+      @final_orientation = 'E'
+    elsif @final_orientation == 'E'
+      @final_orientation = 'S'
+    elsif @final_orientation == 'S'
+      @final_orientation = 'W'
+    elsif @final_orientation == 'W'
+      @final_orientation = 'N'
+    end
+  end
+
+  def left
+    if @final_orientation == 'N'
+      @final_orientation = 'W'
+    elsif @final_orientation == 'E'
+      @final_orientation = 'N'
+    elsif @final_orientation == 'S'
+      @final_orientation = 'E'
+    elsif @final_orientation == 'W'
+      @final_orientation = 'S'
+    end
+  end
+
 end
