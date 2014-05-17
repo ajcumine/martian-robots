@@ -54,21 +54,29 @@ class Robot
     @final_orientation = orientation
     @new_x = x_coord
     @new_y = y_coord
-    @instructions.each do |i|
-      if i == 'F'
-        forward
-      elsif i == 'R'
-        right
-      elsif i == 'L'
-        left
-      end
-      if @new_x > x_boundary || @new_x < 0 || @new_y > y_boundary || @new_y < 0
-        self.lost
-        return
-      else
-        @final_x = @new_x
-        @final_y = @new_y
-      end
+    @instructions.each do |change|
+      movement(change)
+      check_lost
+    end
+  end
+
+  def movement(change)
+    if change == 'F'
+      forward
+    elsif change == 'R'
+      right
+    elsif change == 'L'
+      left
+    end
+  end
+
+  def check_lost
+    if @new_x > x_boundary || @new_x < 0 || @new_y > y_boundary || @new_y < 0
+      self.lost
+      return
+    else
+      @final_x = @new_x
+      @final_y = @new_y
     end
   end
 
