@@ -30,7 +30,7 @@ describe 'martian_robots' do
   context 'output' do
     it 'provides an output for each robot' do
       input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
-      expect(output).to eq("11E\n33N\n23S")
+      expect(output).to eq("11E\n33N\n24S")
     end
   end
 end

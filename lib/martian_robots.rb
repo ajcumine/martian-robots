@@ -27,3 +27,12 @@ def robots
   @robot_data.each {|e| @robots << Robot.new(e[0],e[1]) }
   @robots
 end
+
+def output
+  @output = []
+  f = robots.each {|r| r.move }
+  f.each do |robot|
+    @output << "#{robot.final_x}#{robot.final_y}#{robot.final_orientation}"
+  end
+  @output.join("\n")
+end
