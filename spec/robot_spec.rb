@@ -2,7 +2,7 @@ require 'robot'
 
 describe Robot do
   context 'on initialisation' do
-    let(:robot) {Robot.new('12E','RFRF')}
+    let(:robot) {Robot.new('12E','RFRF',5,6)}
 
     it 'has an initial x coordinate' do
       expect(robot.x_coord).to eq(1)
@@ -18,6 +18,18 @@ describe Robot do
 
     it 'has a set of instructions' do
       expect(robot.instructions).to eq(['R','F','R','F'])
+    end
+
+    it 'has a maximum x coordinate' do
+      expect(robot.maximum_x).to eq(5)
+    end
+
+    it 'has a maximum y coordinate' do
+      expect(robot.maximum_y).to eq(6)
+    end
+
+    it 'is not lost on creation' do
+      expect(robot.lost?).to be(false)
     end
   end
 
@@ -96,6 +108,22 @@ describe Robot do
       robot = Robot.new('12W','L')
       robot.move
       expect(robot.final_orientation).to eq('S')
+    end
+  end
+
+  context 'when moving off the map' do
+    before :each do
+      let(:robot) {Robot.new('11E','FF',2,2)}
+    end
+
+    it 'records the location from where it moved' do
+      robot.move
+      expect(robot.final_x).to eq(2)
+    end
+
+    it 'knows the robot is lost' do
+      robot.move
+      expect(robot.lost?).to be(true)
     end
   end
 end
