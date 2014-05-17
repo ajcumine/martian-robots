@@ -1,8 +1,25 @@
 class Robot
 
-  def initialize(init_pos,instr,x_boundary,y_boundary)
+  attr_accessor :x_boundary, :y_boundary
+
+  def initialize(init_pos,instr,x_bound,y_bound)
     @initial_position = init_pos.split('')
     @instructions = instr.split('')
+    @x_boundary = x_bound
+    @y_boundary = y_bound
+    safe
+  end
+
+  def lost?
+    @lost
+  end
+
+  def safe
+    @lost = false
+  end
+
+  def lost
+    @lost = true
   end
 
   def instructions
@@ -35,8 +52,8 @@ class Robot
 
   def move
     @final_orientation = orientation
-    @final_x = x_coord
-    @final_y = y_coord
+    @new_x = x_coord
+    @new_y = y_coord
     @instructions.each do |i|
       if i == 'F'
         forward
@@ -45,18 +62,26 @@ class Robot
       elsif i == 'L'
         left
       end
+      if @new_x > x_boundary || @new_x < 0 || @new_y > y_boundary || @new_y < 0
+        self.lost
+        return
+      else
+        @final_x = @new_x
+        @final_y = @new_y
+      end
     end
   end
 
   def forward
+    
     if @final_orientation == 'N'
-      @final_y += 1
+      @new_y += 1
     elsif @final_orientation == 'E'
-      @final_x += 1
+      @new_x += 1
     elsif @final_orientation == 'S'
-      @final_y -= 1
+      @new_y -= 1
     elsif @final_orientation == 'W'
-      @final_x -= 1
+      @new_x -= 1
     end
   end
 

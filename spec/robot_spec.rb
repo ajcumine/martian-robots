@@ -29,7 +29,12 @@ describe Robot do
     end
 
     it 'is not lost on creation' do
-      expect(robot.lost?).to be(false)
+      expect(robot).not_to be_lost
+    end
+
+    it 'is about to be lost' do
+      robot.lost
+      expect(robot).to be_lost
     end
   end
 
@@ -121,7 +126,7 @@ describe Robot do
 
     it 'knows the robot is lost' do
       robot.move
-      expect(robot.lost?).to be(true)
+      expect(robot).to be_lost
     end
   end
 end
