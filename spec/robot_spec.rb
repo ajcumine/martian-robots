@@ -121,4 +121,12 @@ describe Robot do
       expect(robot).to be_lost
     end
   end
+
+  context 'when given a command that follows a scent' do
+    it 'will ignore the command' do
+      robot = Robot.new('11E','FFLF',[2,2],[[2,1,'E']])
+      robot.move
+      expect(robot.final_coords).to eq([2,2,'N'])
+    end
+  end
 end
