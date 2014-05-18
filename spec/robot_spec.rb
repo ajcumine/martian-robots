@@ -123,6 +123,11 @@ describe Robot do
   end
 
   context 'when given a command that follows a scent' do
+    it 'knows the command is bad' do
+      robot = Robot.new('21E','F',[2,2],[[2,1,'E']])
+      expect(robot.check_movement).to be(true)
+    end
+
     it 'will ignore the command' do
       robot = Robot.new('11E','FFLF',[2,2],[[2,1,'E']])
       robot.move

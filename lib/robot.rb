@@ -32,16 +32,27 @@ class Robot
     end
   end
 
+  def update_coords
+    if !lost?
+      @final_coords = [@coords[0],@coords[1],@coords[2]]
+    else
+      @coords = new_coords
+    end
+  end
+
+  def check_movement
+    all_match = @scents.map {|scent| scent == @coords}
+    @any_match = all_match.include?(true)
+  end
+
   def move
     @new_coords = coords
     @instructions.each do |change|
+      check_movement
+      next if change == 'F' && check_movement == true
       movement(change)
       check_lost
-      if !lost?
-        @final_coords = [@coords[0],@coords[1],@coords[2]]
-      else
-        @coords = new_coords
-      end
+      update_coords
     end
   end
 
