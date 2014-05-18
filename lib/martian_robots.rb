@@ -14,14 +14,6 @@ def robot_data
   @robot_data
 end
 
-def maximum_x
-  @maximum_x = @map_data.split('')[0].to_i
-end
-
-def maximum_y
-  @maximum_y = @map_data.split('')[1].to_i
-end
-
 def robots
   @robots = []
   @robot_data.each {|e| @robots << Robot.new(e[0],e[1],map_data,robot_scents)}

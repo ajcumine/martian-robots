@@ -113,7 +113,7 @@ describe Robot do
 
     it 'records the location from where it moved' do
       robot.move
-      expect(robot.final_coords).to eq([1,2,'E'])
+      expect(robot.final_coords).to eq([2,1,'E'])
     end
 
     it 'knows the robot is lost' do

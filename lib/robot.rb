@@ -1,12 +1,14 @@
 class Robot
 
-  attr_accessor :x_boundary, :y_boundary, :scents
+  attr_accessor :boundarys, :scents, :instructions, :coords, :final_coords, :new_coords
 
-  def initialize(init_pos,instr,x_bound,y_bound,robot_scents)
-    @initial_position = init_pos.split('')
+  def initialize(init_pos,instr,bounds,robot_scents)
+    @coords = [ init_pos.split('')[0].to_i,
+                init_pos.split('')[1].to_i,
+                init_pos.split('')[2]
+              ]
     @instructions = instr.split('')
-    @x_boundary = x_bound
-    @y_boundary = y_bound
+    @boundarys = bounds
     @scents = robot_scents
     safe
   end
@@ -23,41 +25,22 @@ class Robot
     @lost = true
   end
 
-  def instructions
-    @instructions
-  end
-
-  def x_coord
-    @x_coord = @initial_position[0].to_i
-  end
-
-  def y_coord
-    @y_coord = @initial_position[1].to_i
-  end
-
-  def orientation
-    @orientation = @initial_position[2]
-  end
-
-  def final_x
-    @final_x
-  end
-
-  def final_y
-    @final_y
-  end
-
-  def final_orientation
-    @final_orientation
+  def check_lost
+    if @new_coords[0] > boundarys[0] || @new_coords[0] < 0 || @new_coords[1] > boundarys[1] || @new_coords[1] < 0
+      self.lost
+    end
   end
 
   def move
-    @final_orientation = orientation
-    @new_x = x_coord
-    @new_y = y_coord
+    @new_coords = coords
     @instructions.each do |change|
       movement(change)
       check_lost
+      if lost? == false
+        @final_coords = ["#{@coords[0]}".to_i,"#{@coords[1]}".to_i,"#{@coords[2]}"]
+      else
+        @coords = new_coords
+      end
     end
   end
 
@@ -71,50 +54,39 @@ class Robot
     end
   end
 
-  def check_lost
-    if @new_x > x_boundary || @new_x < 0 || @new_y > y_boundary || @new_y < 0
-      self.lost
-      return
-    else
-      @final_x = @new_x
-      @final_y = @new_y
-    end
-  end
-
   def forward
-    
-    if @final_orientation == 'N'
-      @new_y += 1
-    elsif @final_orientation == 'E'
-      @new_x += 1
-    elsif @final_orientation == 'S'
-      @new_y -= 1
-    elsif @final_orientation == 'W'
-      @new_x -= 1
+    if @coords[2] == 'N'
+      @new_coords[1] += 1
+    elsif @coords[2] == 'E'
+      @new_coords[0] += 1
+    elsif @coords[2] == 'S'
+      @new_coords[1] -= 1
+    elsif @coords[2] == 'W'
+      @new_coords[0] -= 1
     end
   end
 
   def right
-    if @final_orientation == 'N'
-      @final_orientation = 'E'
-    elsif @final_orientation == 'E'
-      @final_orientation = 'S'
-    elsif @final_orientation == 'S'
-      @final_orientation = 'W'
-    elsif @final_orientation == 'W'
-      @final_orientation = 'N'
+    if @coords[2] == 'N'
+      @new_coords[2] = 'E'
+    elsif @coords[2] == 'E'
+      @new_coords[2] = 'S'
+    elsif @coords[2] == 'S'
+      @new_coords[2] = 'W'
+    elsif @coords[2] == 'W'
+      @new_coords[2] = 'N'
     end
   end
 
   def left
-    if @final_orientation == 'N'
-      @final_orientation = 'W'
-    elsif @final_orientation == 'E'
-      @final_orientation = 'N'
-    elsif @final_orientation == 'S'
-      @final_orientation = 'E'
-    elsif @final_orientation == 'W'
-      @final_orientation = 'S'
+    if @coords[2] == 'N'
+      @new_coords[2] = 'W'
+    elsif @coords[2] == 'E'
+      @new_coords[2] = 'N'
+    elsif @coords[2] == 'S'
+      @new_coords[2] = 'E'
+    elsif @coords[2] == 'W'
+      @new_coords[2] = 'S'
     end
   end
 
