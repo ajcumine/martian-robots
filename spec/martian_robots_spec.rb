@@ -26,4 +26,10 @@ describe 'martian_robots' do
       expect(robot_scents).to eq([[1,3,'N']])
     end  
   end
+
+  it 'gives an output' do
+    input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
+    move_robots
+    expect(output).to eq("11E\n33N LOST\n23S")
+  end
 end
