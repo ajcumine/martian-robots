@@ -27,9 +27,22 @@ describe 'martian_robots' do
     end  
   end
 
-  it 'gives an output' do
-    input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
-    move_robots
-    expect(output).to eq("11E\n33N LOST\n23S")
+  context 'after moving' do
+    before :each do
+      input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
+      move_robots
+    end
+
+    it 'have final positions' do
+      expect(final_positions).to eq([1,1,'E'],[3,3,'N'],[2,3,'S'])
+    end
+
+    it 'is knows if it is lost' do
+      expect(lost_robots).to eq(false,true,false)
+    end
+
+    it 'gives an output' do
+      expect(output).to eq("11E\n33N LOST\n23S")
+    end
   end
 end
