@@ -26,16 +26,4 @@ describe 'martian_robots' do
       expect(robots.count).to eq(3)
     end
   end
-
-  # context 'output' do
-  #   it 'provides an output for each robot' do
-  #     input("53\n11E\nRFRFRFRF\n\n03W\nLLFFFLFLFL")
-  #     expect(output).to eq("11E\n24S")
-  #   end
-
-  #   it 'says when a robot is lost' do
-  #     input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
-  #     expect(output).to eq("11E\n33NLOST\n24S")
-  #   end
-  # end
 end
