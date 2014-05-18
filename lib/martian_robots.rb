@@ -7,7 +7,7 @@ def input(arg)
 end
 
 def map_data
-  @map_data
+  @map_data.split('').map {|e| e.to_i}
 end
 
 def robot_data
@@ -24,10 +24,15 @@ end
 
 def robots
   @robots = []
-  @robot_data.each {|e| @robots << Robot.new(e[0],e[1],maximum_x,maximum_y,robot_scents)}
+  @robot_data.each {|e| @robots << Robot.new(e[0],e[1],map_data,robot_scents)}
   @robots
 end
 
 def robot_scents
+  @robot_scents = []
+  @robot_scents
 end
 
+def move_robots
+  robots.each {|e| e.move}
+end

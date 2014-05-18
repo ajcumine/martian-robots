@@ -7,15 +7,7 @@ describe 'martian_robots' do
     end
 
     it 'separates the map size' do
-      expect(map_data).to eq('53')
-    end
-  
-    it 'has a maximum x value' do
-      expect(maximum_x).to eq(5)
-    end
-  
-    it 'has a maximum y value' do
-      expect(maximum_y).to eq(3)
+      expect(map_data).to eq([5,3])
     end
   
     it 'separates the robot data' do
@@ -29,9 +21,9 @@ describe 'martian_robots' do
 
   context 'when a robot is lost' do
     it 'saves the scent so it can be passed to the next robot' do
-      robot = Robot.new('12N','FF',2,3,[[0,0,'S']])
-      robot.move
-      expect(robot_scents).to eq([[0,0,'S'],[1,3,'N']])
+      input("23\n11N\nFF")
+      move_robots
+      expect(robot_scents).to eq([[1,3,'N']])
     end  
   end
 end
