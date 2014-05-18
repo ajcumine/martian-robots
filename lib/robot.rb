@@ -38,7 +38,7 @@ class Robot
       movement(change)
       check_lost
       if !lost?
-        @final_coords = ["#{@coords[0]}".to_i,"#{@coords[1]}".to_i,"#{@coords[2]}"]
+        @final_coords = [@coords[0],@coords[1],@coords[2]]
       else
         @coords = new_coords
       end
