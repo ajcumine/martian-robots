@@ -1,12 +1,13 @@
 class Robot
 
-  attr_accessor :x_boundary, :y_boundary
+  attr_accessor :x_boundary, :y_boundary, :scents
 
-  def initialize(init_pos,instr,x_bound,y_bound)
+  def initialize(init_pos,instr,x_bound,y_bound,robot_scents)
     @initial_position = init_pos.split('')
     @instructions = instr.split('')
     @x_boundary = x_bound
     @y_boundary = y_bound
+    @scents = robot_scents
     safe
   end
 

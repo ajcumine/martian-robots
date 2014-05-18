@@ -24,6 +24,10 @@ end
 
 def robots
   @robots = []
-  @robot_data.each {|e| @robots << Robot.new(e[0],e[1],maximum_x,maximum_y)}
+  @robot_data.each {|e| @robots << Robot.new(e[0],e[1],maximum_x,maximum_y,robot_scents)}
   @robots
 end
+
+def robot_scents
+end
+
