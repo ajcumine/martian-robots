@@ -7,7 +7,7 @@ def input(arg)
 end
 
 def map_data
-  @map_data.split('').map {|e| e.to_i}
+  @map_data.split(' ').map {|e| e.to_i}
 end
 
 def robot_data
@@ -47,7 +47,7 @@ def output
   i = 0
   @output = ''
   while i < @robots.count
-    @output << final_positions[i].join + lost_robots[i] + "\n"
+    @output << final_positions[i].join(' ') + lost_robots[i] + "\n"
     i += 1
   end
   @output.chomp

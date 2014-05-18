@@ -4,9 +4,9 @@ class Robot
   attr_reader :boundarys, :scents, :instructions
 
   def initialize(init_pos,instr,bounds,robot_scents)
-    @coords = [ init_pos.split('')[0].to_i,
-                init_pos.split('')[1].to_i,
-                init_pos.split('')[2]
+    @coords = [ init_pos.split(' ')[0].to_i,
+                init_pos.split(' ')[1].to_i,
+                init_pos.split(' ')[2]
               ]
     @instructions = instr.split('')
     @boundarys = bounds

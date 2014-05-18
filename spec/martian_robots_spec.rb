@@ -3,7 +3,7 @@ require 'martian_robots'
 describe 'martian_robots' do
   context 'when given an input' do
     before :each do
-      input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
+      input("5 3\n1 1 E\nRFRFRFRF\n\n3 2 N\nFRRFLLFFRRFLL\n\n0 3 W\nLLFFFLFLFL")
     end
 
     it 'separates the map size' do
@@ -11,7 +11,7 @@ describe 'martian_robots' do
     end
   
     it 'separates the robot data' do
-      expect(robot_data).to eq([["11E","RFRFRFRF"],["32N","FRRFLLFFRRFLL"],["03W","LLFFFLFLFL"]])
+      expect(robot_data).to eq([["1 1 E","RFRFRFRF"],["3 2 N","FRRFLLFFRRFLL"],["0 3 W","LLFFFLFLFL"]])
     end
   
     it 'creates the right number of robots' do
@@ -21,7 +21,7 @@ describe 'martian_robots' do
 
   context 'when a robot is lost' do
     it 'saves the scent so it can be passed to the next robot' do
-      input("23\n11N\nFFF")
+      input("2 3\n1 1 N\nFFF")
       move_robots
       expect(robot_scents).to eq([[1,3,'N']])
     end  
@@ -29,7 +29,7 @@ describe 'martian_robots' do
 
   context 'after moving' do
     before :each do
-      input("53\n11E\nRFRFRFRF\n\n32N\nFRRFLLFFRRFLL\n\n03W\nLLFFFLFLFL")
+      input("5 3\n1 1 E\nRFRFRFRF\n\n3 2 N\nFRRFLLFFRRFLL\n\n0 3 W\nLLFFFLFLFL")
       move_robots
     end
 
@@ -42,7 +42,7 @@ describe 'martian_robots' do
     end
 
     it 'gives an output' do
-      expect(output).to eq("11E\n33N LOST\n23S")
+      expect(output).to eq("1 1 E\n3 3 N LOST\n2 3 S")
     end
   end
 end
