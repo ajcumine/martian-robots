@@ -21,7 +21,7 @@ describe 'martian_robots' do
 
   context 'when a robot is lost' do
     it 'saves the scent so it can be passed to the next robot' do
-      input("23\n11N\nFF")
+      input("23\n11N\nFFF")
       move_robots
       expect(robot_scents).to eq([[1,3,'N']])
     end  

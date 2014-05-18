@@ -21,10 +21,15 @@ def robots
 end
 
 def robot_scents
-  @robot_scents = []
   @robot_scents
 end
 
 def move_robots
-  robots.each {|e| e.move}
+  @robot_scents = []
+  robots.each do |e| 
+    e.move
+    if e.lost?
+      @robot_scents << e.final_coords
+    end
+  end
 end
