@@ -34,11 +34,11 @@ describe 'martian_robots' do
     end
 
     it 'have final positions' do
-      expect(final_positions).to eq([1,1,'E'],[3,3,'N'],[2,3,'S'])
+      expect(final_positions).to eq([[1,1,'E'],[3,3,'N'],[2,3,'S']])
     end
 
     it 'is knows if it is lost' do
-      expect(lost_robots).to eq(false,true,false)
+      expect(lost_robots).to eq(['',' LOST',''])
     end
 
     it 'gives an output' do

@@ -33,3 +33,26 @@ def move_robots
     end
   end
 end
+
+def final_positions
+  @robots.map {|robot| robot.final_coords}
+end
+
+def lost_robots
+  true_or_false = @robots.map {|robot| robot.lost?}
+  true_or_false.map {|option| option == true ? option = ' LOST' : option = ''}
+end
+
+def output
+  i = 0
+  @output = ''
+  while i < @robots.count
+    @output << final_positions[i].join + lost_robots[i] + "\n"
+    i += 1
+  end
+  @output.chomp
+end
+
+
+
+
