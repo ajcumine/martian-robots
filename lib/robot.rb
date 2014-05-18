@@ -1,6 +1,7 @@
 class Robot
 
-  attr_accessor :boundarys, :scents, :instructions, :coords, :final_coords, :new_coords
+  attr_accessor  :coords, :final_coords, :new_coords
+  attr_reader :boundarys, :scents, :instructions
 
   def initialize(init_pos,instr,bounds,robot_scents)
     @coords = [ init_pos.split('')[0].to_i,
@@ -36,7 +37,7 @@ class Robot
     @instructions.each do |change|
       movement(change)
       check_lost
-      if lost? == false
+      if !lost?
         @final_coords = ["#{@coords[0]}".to_i,"#{@coords[1]}".to_i,"#{@coords[2]}"]
       else
         @coords = new_coords
