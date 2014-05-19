@@ -1,6 +1,7 @@
 ###Problem: Martian Robots
 
 A coding challenge.
+
 ####The Problem
 The surface of Mars can be modelled by a rectangular grid around which robots are able to move according to instructions provided from Earth. You are to write a program that determines each sequence of robot positions and reports the final position of the robot.
 A robot position consists of a grid coordinate (a pair of integers: x-coordinate followed by y-coordinate) and an orientation (N, S, E, W for north, south, east, and west).
@@ -24,19 +25,49 @@ All instruction strings will be less than 100 characters in length.
 For each robot position/instruction in the input, the output should indicate the final grid position and orientation of the robot. If a robot falls off the edge of the grid the word “LOST” should be printed after the position and orientation.
 #####Sample Input
 ```
-53
-11E 
+5 3
+1 1 E 
 RFRFRFRF
 
-32N 
+3 2 N 
 FRRFLLFFRRFLL
 
-03W
+0 3 W
 LLFFFLFLFL
 ```
 #####Sample Output
 ```
-11E
-33NLOST
-23S
+1 1 E
+3 3 N LOST
+2 3 S
 ```
+
+####Instruction
+
+In irb:
+
+######Basic commands
+
+```
+> require './lib/martian_robots'
+> input(<your input>)
+> move_robots
+> ouput
+```
+
+######Improved output
+
+```
+> require './lib/martian_robots'
+> input(<your input here>)
+> move_robots
+> puts "#{ouput}"
+```
+######Input format
+
+Your input must be in the format:
+
+```
+"5 3\n1 1 E\nRFRFRFRF\n\n3 2 N\nFRRFLLFFRRFLL\n\n0 3 W\nLLFFFLFLFL"
+```
+Following the sample input from the problem section. 
