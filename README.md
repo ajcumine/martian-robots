@@ -71,3 +71,10 @@ Your input must be in the format:
 "5 3\n1 1 E\nRFRFRFRF\n\n3 2 N\nFRRFLLFFRRFLL\n\n0 3 W\nLLFFFLFLFL"
 ```
 Following the sample input from the problem section. 
+
+####Things to improve/add
+
+* Add a distance traveled method for each robot, both 'as the crow flies' and total distance.
+* Keep the paths of robots while lost to map the area.
+* Add areas to avoid (crevasses, cliffs, etc.).
+* Make sure new robots don't walk into old robots.
