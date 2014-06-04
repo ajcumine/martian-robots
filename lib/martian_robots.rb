@@ -53,6 +53,11 @@ def output
   @output.chomp
 end
 
+File.open(ARGV[0],'r') {|f| @text = f.read}
+input(@text)
+move_robots
+File.open('robot_output.txt','w') {|f| f.write(output)}
+
 
 
 
