@@ -108,6 +108,32 @@ describe Robot do
     end
   end
 
+  context 'following instructions R new movement' do
+    it 'when facing north changes to east' do
+      robot = Robot.new('1 2 N','R',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('E')
+    end
+
+    it 'when facing east changes to south' do
+      robot = Robot.new('1 2 E','R',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('S')
+    end
+
+    it 'when facing south changes to west' do
+      robot = Robot.new('1 2 S','R',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('W')
+    end
+
+    it 'when facing west changes to north' do
+      robot = Robot.new('1 2 W','R',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('N')
+    end
+  end
+
   context 'following instructions L' do
     it 'when facing north changes to west' do
       robot = Robot.new('1 2 N','L',[5,5],[])
@@ -130,6 +156,32 @@ describe Robot do
     it 'when facing west changes to south' do
       robot = Robot.new('1 2 W','L',[5,5],[])
       robot.move
+      expect(robot.final_coords[2]).to eq('S')
+    end
+  end
+
+  context 'following instructions L new movement' do
+    it 'when facing north changes to west' do
+      robot = Robot.new('1 2 N','L',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('W')
+    end
+
+    it 'when facing east changes to north' do
+      robot = Robot.new('1 2 E','L',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('N')
+    end
+
+    it 'when facing south changes to east' do
+      robot = Robot.new('1 2 S','L',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[2]).to eq('E')
+    end
+
+    it 'when facing west changes to south' do
+      robot = Robot.new('1 2 W','L',[5,5],[])
+      robot.new_move
       expect(robot.final_coords[2]).to eq('S')
     end
   end
