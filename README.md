@@ -23,7 +23,11 @@ All instruction strings will be less than 100 characters in length.
 ####The Output
 
 For each robot position/instruction in the input, the output should indicate the final grid position and orientation of the robot. If a robot falls off the edge of the grid the word “LOST” should be printed after the position and orientation.
+
 #####Sample Input
+
+The input is a text file that
+
 ```
 5 3
 1 1 E 
@@ -35,7 +39,9 @@ FRRFLLFFRRFLL
 0 3 W
 LLFFFLFLFL
 ```
+
 #####Sample Output
+
 ```
 1 1 E
 3 3 N LOST
@@ -44,33 +50,19 @@ LLFFFLFLFL
 
 ####Instruction
 
-In irb:
+In terminal navigate to the <strong>/martian-robots/lib</strong> directory:
 
-######Basic commands
-
-```
-> require './lib/martian_robots'
-> input(<your input>)
-> move_robots
-> ouput
-```
-
-######Improved output
+#####Basic commands
 
 ```
-> require './lib/martian_robots'
-> input(<your input here>)
-> move_robots
-> puts "#{ouput}"
+> ruby martian_robots.rb <your text file>
 ```
-######Input format
 
-Your input must be in the format:
+<strong>Your text file</strong> must contain an input following the sample input from the problem section. Include the directory of your text file if it is outside the <strong>/martian-robots/lib</strong> directory.
 
-```
-"5 3\n1 1 E\nRFRFRFRF\n\n3 2 N\nFRRFLLFFRRFLL\n\n0 3 W\nLLFFFLFLFL"
-```
-Following the sample input from the problem section. 
+##### Output
+
+Your output will be given in a text file in the <strong>/martian-robots/lib</strong> directory with the name <strong>robot_output.txt</strong>.
 
 ####Things to improve/add
 
@@ -79,4 +71,4 @@ Following the sample input from the problem section.
 * Add areas to avoid (crevasses, cliffs, etc.).
 * Make sure new robots don't walk into old robots.
 * The robot scents are stored as a list, making it progressively slower for a robot to check a valid move as robots are added (the lookup is O(n)). A hash would be a more appropriate data structure.
-*  Enable the main script was able to read from stdin and write to stdout.
+* Create a world class.
