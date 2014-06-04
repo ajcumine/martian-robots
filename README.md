@@ -78,3 +78,6 @@ Following the sample input from the problem section.
 * Keep the paths of robots while lost to map the area.
 * Add areas to avoid (crevasses, cliffs, etc.).
 * Make sure new robots don't walk into old robots.
+* The robot scents are stored as a list, making it progressively slower for a robot to check a valid move as robots are added (the lookup is O(n)). A hash would be a more appropriate data structure.
+* The translation of robot directions and coordinate updates using branching. Instead the mapping could be stored in a hash and the lookup code would be cleaner.
+*  Enable the main script was able to read from stdin and write to stdout.
