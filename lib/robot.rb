@@ -49,7 +49,7 @@ class Robot
     @new_coords = coords
     @instructions.each do |change|
       check_movement
-      next if change == 'F' && check_movement == true
+      next if change == 'F' && @any_match == true
       movement(change)
       check_lost
       update_coords
