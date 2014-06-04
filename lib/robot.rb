@@ -58,28 +58,7 @@ class Robot
     end
   end
 
-  def new_move
-    @new_coords = coords
-    @instructions.each do |change|
-      check_movement
-      next if change == 'F' && @any_match == true
-      new_movement(change)
-      check_lost
-      update_coords
-    end
-  end
-
   def movement(change)
-    if change == 'F'
-      forward
-    elsif change == 'R'
-      right
-    elsif change == 'L'
-      left
-    end
-  end
-
-  def new_movement(change)
     change == 'F' ? change_position : change_direction(change)
   end
 
@@ -95,42 +74,6 @@ class Robot
     new_direction = change == 'R' ? current_direction + 1 : current_direction - 1
     new_direction = 0 if new_direction > 3
     @new_coords[2] = DIRECTION[new_direction]
-  end
-
-  def forward
-    if @coords[2] == 'N'
-      @new_coords[1] += 1
-    elsif @coords[2] == 'E'
-      @new_coords[0] += 1
-    elsif @coords[2] == 'S'
-      @new_coords[1] -= 1
-    elsif @coords[2] == 'W'
-      @new_coords[0] -= 1
-    end
-  end
-
-  def right
-    if @coords[2] == 'N'
-      @new_coords[2] = 'E'
-    elsif @coords[2] == 'E'
-      @new_coords[2] = 'S'
-    elsif @coords[2] == 'S'
-      @new_coords[2] = 'W'
-    elsif @coords[2] == 'W'
-      @new_coords[2] = 'N'
-    end
-  end
-
-  def left
-    if @coords[2] == 'N'
-      @new_coords[2] = 'W'
-    elsif @coords[2] == 'E'
-      @new_coords[2] = 'N'
-    elsif @coords[2] == 'S'
-      @new_coords[2] = 'E'
-    elsif @coords[2] == 'W'
-      @new_coords[2] = 'S'
-    end
   end
 
 end
