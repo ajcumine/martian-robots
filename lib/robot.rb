@@ -80,7 +80,7 @@ class Robot
   end
 
   def new_movement(change)
-    change == 'F' ? change_position : change_direction
+    change == 'F' ? change_position : change_direction(change)
   end
 
   def change_position
@@ -90,8 +90,11 @@ class Robot
     @new_coords[0] -= 1 if @coords[2] == 'W'
   end
 
-  def change_direction
-
+  def change_direction(change)
+    current_direction = DIRECTION.index(@new_coords[2])
+    new_direction = change == 'R' ? current_direction + 1 : current_direction - 1
+    new_direction = 0 if new_direction > 3
+    @new_coords[2] = DIRECTION[new_direction]
   end
 
   def forward
