@@ -83,6 +83,17 @@ class Robot
     change == 'F' ? change_position : change_direction
   end
 
+  def change_position
+    @new_coords[1] += 1 if @coords[2] == 'N'
+    @new_coords[0] += 1 if @coords[2] == 'E'
+    @new_coords[1] -= 1 if @coords[2] == 'S'
+    @new_coords[0] -= 1 if @coords[2] == 'W'
+  end
+
+  def change_direction
+
+  end
+
   def forward
     if @coords[2] == 'N'
       @new_coords[1] += 1
