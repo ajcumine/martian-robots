@@ -56,6 +56,32 @@ describe Robot do
     end
   end
 
+  context 'following instructions F new movement' do
+    it 'increases y coordinate when facing north' do
+      robot = Robot.new('1 2 N','F',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[1]).to eq(3)
+    end
+
+    it 'decreases y coordinate when facing south' do
+      robot = Robot.new('1 2 S','F',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[1]).to eq(1)
+    end
+
+    it 'increases x coordinate when facing east' do
+      robot = Robot.new('1 2 E','F',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[0]).to eq(2)
+    end
+
+    it 'decreases x coordinate when facing west' do
+      robot = Robot.new('1 2 W','F',[5,5],[])
+      robot.new_move
+      expect(robot.final_coords[0]).to eq(0)
+    end
+  end
+
   context 'following instructions R' do
     it 'when facing north changes to east' do
       robot = Robot.new('1 2 N','R',[5,5],[])

@@ -1,3 +1,5 @@
+DIRECTION = ['N', 'E', 'S', 'W']
+
 class Robot
 
   attr_accessor  :coords, :final_coords, :new_coords
@@ -56,6 +58,17 @@ class Robot
     end
   end
 
+  def new_move
+    @new_coords = coords
+    @instructions.each do |change|
+      check_movement
+      next if change == 'F' && @any_match == true
+      new_movement(change)
+      check_lost
+      update_coords
+    end
+  end
+
   def movement(change)
     if change == 'F'
       forward
@@ -64,6 +77,10 @@ class Robot
     elsif change == 'L'
       left
     end
+  end
+
+  def new_movement(change)
+    change == 'F' ? change_position : change_direction
   end
 
   def forward
